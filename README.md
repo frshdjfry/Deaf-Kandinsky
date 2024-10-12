@@ -1,15 +1,40 @@
-# Deaf Kandinsky: Multi-Track Music Generation Based on Frame Colors
+# Deaf Kandinsky: Multi-Track Music Generation from Film Colors
 
-Deaf Kandinsky is a project that generates multi-track music based on the colors present in the frames of a movie. It uses the 12-tone system and randomly applies variations such as inversion, retrograde, and retrograde-inversion to create a unique, experimental soundscape for each film. The generated music adapts to the colors in different frames of the film and randomizes note durations to add an experimental feel.
+
+### Overview
+Deaf Kandinsky explores the connection between visual art and music, drawing on Wassily Kandinsky's theory of synesthesia, where colors can evoke corresponding sounds. The project analyzes the dominant colors in film frames to generate multi-track music, applying the 12-tone system to create compositions that reflect the visual dynamics of each scene. 
+
+This approach has been used in experimental films like [*"Deaf Kandinsky (2024)"*](https://vimeo.com/1018871372) and [*"Glaucoma (2023)"*](https://vimeo.com/1017605789), where the soundtrack is directly influenced by the film’s visual elements.
+
+Inspired by Arnold Schoenberg’s 12-tone technique, each note in the chromatic scale is treated equally, and a tone row is selected. The row can be transformed in several ways:
+- **Prime**: The original form of the tone row.
+- **Inversion**: Reverses the intervals between notes.
+- **Retrograde**: Plays the tone row backward.
+- **Retrograde-Inversion**: Plays the row backward with inverted intervals.
+
+
+## How to Use the Project
 
 The project consists of three scripts:
 1. `frame_extractor.py`: Extracts individual frames from a movie.
 2. `image_processing.py`: Processes each frame to detect the colors and timing information.
 3. `note_gen.py`: Generates MIDI music based on the color data extracted from the frames.
 
-This approach was used in the short experimental films "Deaf Kandinsky" and "Glaucoma."
 
-## How to Use the Project
+## Requirements
+
+- Python 3.x
+- Libraries:
+  - `opencv-python` (`cv2`)
+  - `pretty_midi`
+  - `mido`
+  - `numpy`
+  - `scenedetect`
+
+Install the required libraries by running:
+```
+pip install opencv-python pretty_midi mido numpy scenedetect
+```
 
 ### Step 1: Frame Extraction with `frame_extractor.py`
 
@@ -47,36 +72,5 @@ python note_gen.py output_data.json --output generated_music.mid
 - **output_data.json**: The JSON file containing color and timing information (from Step 2).
 - **--output generated_music.mid**: The optional parameter to specify the output MIDI file. If not provided, it will default to `output.mid`.
 
-## Project Overview
-
-### Concept
-The project aims to generate multi-track music that is tied to the visual elements of a movie, specifically based on colors in each frame. The result is an evolving soundscape where each track corresponds to a different color, and the music reflects the color dynamics throughout the film.
-
-### 12-Tone System
-The project uses the 12-tone technique, popularized by composers like Arnold Schoenberg. In this system, all 12 notes of the chromatic scale are treated as equal, and a tone row (a sequence of the 12 notes) is chosen. This tone row can be manipulated in several ways:
-- **Prime**: The original form of the tone row.
-- **Inversion**: The intervals between notes are inverted.
-- **Retrograde**: The tone row is played backward.
-- **Retrograde-Inversion**: The tone row is played backward with inverted intervals.
-
-Each note's duration is also chosen randomly, adding an additional element of experimentation.
-
-### Usage in Experimental Films
-This method was applied in two short experimental films, *"Deaf Kandinsky"* and *"Glaucoma"*, where the music's form and evolution were influenced directly by the visual elements of the films.
-
-## Requirements
-
-- Python 3.x
-- Libraries:
-  - `opencv-python` (`cv2`)
-  - `pretty_midi`
-  - `mido`
-  - `numpy`
-  - `scenedetect`
-
-Install the required libraries by running:
-```
-pip install opencv-python pretty_midi mido numpy scenedetect
-```
 ## License
 This project is released under the MIT License. See the LICENSE file for more details.
